@@ -19,9 +19,11 @@
   "homepage": "https://github.com/lsecrease/PersonaTV-Front#readme",
   "dependencies": {
     "axios": "^0.11.0",
+    "history": "^2.1.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
+    "react-router": "^2.4.0",
     "redux": "^3.5.2",
     "redux-act": "^0.4.0",
     "redux-thunk": "^2.0.1"
