@@ -2,6 +2,7 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import { useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
 import createLogger from 'redux-logger';
+import { syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 import routes from './routes';
@@ -15,7 +16,10 @@ const createStoreWithMiddleware = compose(
 )(createStore);
 
 const store = createStoreWithMiddleware(reducers),
-    history = useRouterHistory(createHashHistory)({ queryKey: false });
+    history = syncHistoryWithStore(
+        useRouterHistory(createHashHistory)({ queryKey: false }),
+        store
+    );
 
 if (module.hot) {
     // Enable Webpack hot module replacement for reducers
