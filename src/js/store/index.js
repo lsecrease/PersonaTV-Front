@@ -19,6 +19,14 @@ const createStoreWithMiddleware = compose(
 const store = createStoreWithMiddleware(reducers),
     history = useRouterHistory(createHashHistory)({ queryKey: false });
 
+if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../reducers', () => {
+        const nextRootReducer = require('../reducers/index');
+        store.replaceReducer(nextRootReducer);
+    });
+}
+
 export default class Store extends Component {
     render() {
         return (
