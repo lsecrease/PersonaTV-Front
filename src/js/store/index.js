@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import { compose, createStore, applyMiddleware } from 'redux';
+import { Router, useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history';
 import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
-import App from '../containers/App';
+import routes from './routes';
 
 const logger = createLogger({
-    predicate: (getState, action) => process.env.NODE_ENV === 'development'
+    predicate: () => process.env.NODE_ENV === 'development'
 });
 
 const createStoreWithMiddleware = compose(
     applyMiddleware(logger, thunk)
 )(createStore);
 
-const store = createStoreWithMiddleware(reducers);
+const store = createStoreWithMiddleware(reducers),
+    history = useRouterHistory(createHashHistory)({ queryKey: false });
 
 export default class Store extends Component {
     render() {
         return (
             <Provider store={store}>
-                {this.props.children}
+                <Router history={history} routes={routes} />
             </Provider>
         );
     }
