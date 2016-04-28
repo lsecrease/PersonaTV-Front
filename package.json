@@ -24,6 +24,7 @@
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
+    "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
     "redux-act": "^0.4.0",
     "redux-thunk": "^2.0.1"
