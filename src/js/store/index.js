@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
 import { compose, createStore, applyMiddleware } from 'redux';
-import { Router, useRouterHistory } from 'react-router';
+import { useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
-import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
@@ -27,12 +25,8 @@ if (module.hot) {
     });
 }
 
-export default class Store extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Router history={history} routes={routes} />
-            </Provider>
-        );
-    }
-}
+export {
+    store,
+    history,
+    routes
+};
