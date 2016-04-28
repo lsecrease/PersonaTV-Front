@@ -3,7 +3,8 @@ var path = require('path'),
     Config = {
         sourceFolder: path.join(__dirname, '../src'),
         jsFolder: path.join(__dirname, '../src/js'),
-        distFolder: path.join(__dirname, '../dist')
+        distFolder: path.join(__dirname, '../dist'),
+        eslintFile: path.join(__dirname, '../.eslintrc')
     };
 
 module.exports = {
@@ -33,11 +34,18 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
+    eslint: {
+        configFile: Config.eslintFile
+    },
     module: {
         loaders: [{
             test: /\.js$/,
             loaders: ['react-hot', 'babel'],
             include: Config.sourceFolder
+        }, {
+            test: /\.js$/,
+            loader: 'eslint-loader',
+            include: Config.jsFolder
         }, {
             test: /\.scss$/,
             loaders: ['style', 'css', 'sass']
