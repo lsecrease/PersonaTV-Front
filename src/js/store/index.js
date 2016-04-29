@@ -1,27 +1,38 @@
-import React, { Component } from 'react';
 import { compose, createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
+import { useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history';
 import createLogger from 'redux-logger';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
-import App from '../containers/App';
+import { getRouter } from './routes';
 
 const logger = createLogger({
-    predicate: (getState, action) => process.env.NODE_ENV === 'development'
+    predicate: () => process.env.NODE_ENV === 'development'
 });
 
-const createStoreWithMiddleware = compose(
-    applyMiddleware(logger, thunk)
+const baseHistory = useRouterHistory(createHashHistory)({ queryKey: false }),
+    createStoreWithMiddleware = compose(
+    applyMiddleware(logger, thunk, routerMiddleware(baseHistory))
 )(createStore);
 
-const store = createStoreWithMiddleware(reducers);
+const store = createStoreWithMiddleware(reducers),
+    routes = getRouter(store),
+    history = syncHistoryWithStore(
+        baseHistory,
+        store
+    );
 
-export default class Store extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                {this.props.children}
-            </Provider>
-        );
-    }
+if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../reducers', () => {
+        const nextRootReducer = require('../reducers/index');
+        store.replaceReducer(nextRootReducer);
+    });
 }
+
+export {
+    store,
+    history,
+    routes
+};

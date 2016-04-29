@@ -1,11 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Store from './store';
-import App from './containers/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router';
+import { store, routes, history } from './store';
 
-ReactDOM.render(
-    <Store>
-        <App />
-    </Store>,
+// Application Main CSS
+require('../styles/main.scss');
+
+render(
+    <Provider store={store}>
+        <Router history={history} routes={routes} />
+    </Provider>,
     document.getElementById('app')
 );
