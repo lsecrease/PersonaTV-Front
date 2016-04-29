@@ -2,22 +2,24 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import { useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
 import createLogger from 'redux-logger';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
-import routes from './routes';
+import { getRouter } from './routes';
 
 const logger = createLogger({
     predicate: () => process.env.NODE_ENV === 'development'
 });
 
-const createStoreWithMiddleware = compose(
-    applyMiddleware(logger, thunk)
+const baseHistory = useRouterHistory(createHashHistory)({ queryKey: false }),
+    createStoreWithMiddleware = compose(
+    applyMiddleware(logger, thunk, routerMiddleware(baseHistory))
 )(createStore);
 
 const store = createStoreWithMiddleware(reducers),
+    routes = getRouter(store),
     history = syncHistoryWithStore(
-        useRouterHistory(createHashHistory)({ queryKey: false }),
+        baseHistory,
         store
     );
 
