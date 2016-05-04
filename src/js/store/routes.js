@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router';
-import { AuthHook } from '../utils/route-authenticator';
 
 // Containers
 import Login from '../containers/Login';
@@ -10,14 +9,15 @@ import Home from '../components/Home';
 import LiveStreaming from '../components/LiveStreaming';
 import NotFound from '../components/NotFound';
 import Channels from '../components/Channels';
+import AuthenticatedRoute from '../components/AuthenticatedRoute';
 
-export function getRouter(store) {
+export function getRouter() {
     return (
         <div>
             <Route path='/' component={Home}>
                 <Route path='login' component={Login} />
-                <Route path='live' component={LiveStreaming} onEnter={AuthHook.bind(this, store)} />
-                <Route path='channels' component={Channels} onEnter={AuthHook.bind(this, store)} />
+                <Route path='live' component={AuthenticatedRoute(LiveStreaming)} />
+                <Route path='channels' component={AuthenticatedRoute(Channels)} />
             </Route>
             <Route path='*' component={NotFound} />
         </div>
