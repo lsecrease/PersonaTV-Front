@@ -5,7 +5,7 @@ import createLogger from 'redux-logger';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
-import { getRouter } from './routes';
+import { routes } from './routes';
 
 const logger = createLogger({
     predicate: () => process.env.NODE_ENV === 'development'
@@ -17,7 +17,6 @@ const baseHistory = useRouterHistory(createHashHistory)({ queryKey: false }),
 )(createStore);
 
 const store = createStoreWithMiddleware(reducers),
-    routes = getRouter(store),
     history = syncHistoryWithStore(
         baseHistory,
         store
