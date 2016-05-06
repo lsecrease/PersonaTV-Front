@@ -47,8 +47,11 @@ module.exports = {
             loader: 'eslint-loader',
             include: Config.jsFolder
         }, {
+            test: /\.png$/,
+            loaders: ['file']
+        }, {
             test: /\.scss$/,
             loaders: ['style', 'css', 'sass']
         }]
     }
-}
+};
