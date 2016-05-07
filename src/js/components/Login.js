@@ -32,14 +32,14 @@ export default class Login extends Component {
                         linkButton={false}
                         secondary={true}
                         backgroundColor={'#3A579A'}
-                        icon={<Facebook styles={{width: '11px', height: '21px', fill: '#FFF'}} viewBox='0 0 11 21' />} />
+                        icon={<Facebook viewBox='0 0 11 21' />} />
 
                     <RaisedButton
                         label="Login with Twitter"
                         linkButton={false}
                         secondary={true}
                         backgroundColor={'#3C97FF'}
-                        icon={<Twitter styles={{width: '21px', height: '16px', fill: '#FFF'}} viewBox='0 0 21 16' />} />
+                        icon={<Twitter viewBox='0 0 21 16' />} />
                 </div>
 
                 <div className='signin_email' style={{
