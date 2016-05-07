@@ -9,9 +9,9 @@ import {
     Tab,
     RaisedButton,
     IconButton,
-    FontIcon,
-    Badge
+    FontIcon
 } from 'material-ui';
+import { Notifications } from './icons';
 
 const logo = require('../images/logo.png'),
     user_picture = require('../images/user.png');
@@ -77,13 +77,20 @@ export default class Header extends React.Component {
                             <FontIcon className='material-icons' color={'#BDC6CF'}>search</FontIcon>
                         </IconButton>
 
-                        <Badge badgeContent={2} badgeStyle={{top: 30, left: 35, width: '18px', height: '18px', backgroundColor: '#00D592', color: 'white', fontWeight: 'bold', fontSize: '10px'}}>
-                            <IconButton tooltip='Notifications'>
-                                <FontIcon className='material-icons' color={'#BDC6CF'}>notifications</FontIcon>
-                            </IconButton>
-                        </Badge>
+                        <IconButton tooltip='Notifications' style={{
+                            backgroundColor: '#434343',
+                            padding: 0,
+                            display: 'flex',
+                            justifyContent: 'center'}}>
 
-                        <IconButton style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
+                            <Notifications styles={{width: '21px', height: '21px', fill: '#BDC6CF'}} viewBox='0 0 25 25' />
+                        </IconButton>
+
+                        <IconButton style={{
+                            padding: 0,
+                            backgroundColor: '#434343',
+                            display: 'flex',
+                            justifyContent: 'center'}}>
                             <Avatar src={user_picture} />
                         </IconButton>
                     </ToolbarGroup>
