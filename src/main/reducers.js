@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import authentication from './authentication';
 import { routerReducer } from 'react-router-redux';
+import authentication from '../shared/reducers/authentication';
 
 const reducers = combineReducers({
     auth: authentication,

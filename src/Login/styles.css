@@ -1,0 +1,35 @@
+@import '../shared/styles/flex-center.css';
+
+.content {
+    width: 25% !important;
+}
+
+.title {
+    font-size: 40px !important;
+    font-weight: 100 !important;
+}
+
+.passport_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.signin_email {
+    composes: flex-center;
+    margin-top: 1em;
+}
+
+.paragraph_text {
+    color: #030303;
+    font-weight: 300;
+}
+
+.email_button_container {
+    margin-top: 1em;
+}
+
+.disclaimer {
+    composes: flex-center;
+    margin-top: 1em;
+}

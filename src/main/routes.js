@@ -2,21 +2,21 @@ import React from 'react';
 import { Route } from 'react-router';
 
 // Containers
-import Login from '../containers/Login';
+import Login from '../Login/';
 
 // Components
-import Home from '../components/Home';
-import LiveStreaming from '../components/LiveStreaming';
-import NotFound from '../components/NotFound';
-import Explore from '../components/Explore';
-import Favorites from '../components/Favorites';
-import AuthenticatedRoute from '../components/AuthenticatedRoute';
+import Home from '../Home/';
+import Live from '../Live/';
+import NotFound from '../NotFound/';
+import Explore from '../Explore/';
+import Favorites from '../Favorites/';
+import AuthenticatedRoute from '../shared/components/AuthenticatedRoute';
 
 export const routes = (
     <div>
         <Route path='/' component={Home}>
             <Route path='login' component={Login} />
-            <Route path='live' component={LiveStreaming} />
+            <Route path='live' component={Live} />
             <Route path='explore' component={Explore} />
             <Route path='favorites' component={AuthenticatedRoute(Favorites)} />
         </Route>

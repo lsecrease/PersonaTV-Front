@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import Header from '../containers/Header';
+import Header from '../Header/';
+import CSSModules from 'react-css-modules';
+import styles from './styles.css';
 
+@CSSModules(styles)
 export default class Home extends Component {
+
     render() {
         return (
-            <div className='main'>
+            <div styleName='main'>
                 <Header />
 
-                <div className='content'>
+                <div styleName='content'>
                     {this.props.children}
                 </div>
             </div>
