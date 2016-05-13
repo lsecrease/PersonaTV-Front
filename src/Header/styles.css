@@ -1,0 +1,39 @@
+$defaultColor: #434343;
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar {
+    display: flex !important;
+    background-color: $defaultColor !important;
+    opacity: 0.9 !important;
+}
+
+.logo {
+    align-self: center !important;
+}
+
+.tabs {
+    margin-left: 1em;
+    width: 30%;
+    align-self: flex-end;
+}
+
+.right-items {
+    width: 70%;
+    margin-left: 10em;
+    composes: center;
+    justify-content: flex-end;
+}
+
+.notifications {
+    background-color: $defaultColor;
+    padding: 0;
+}
+
+.avatar {
+    padding: 0 !important;
+}
