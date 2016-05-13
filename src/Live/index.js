@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-export default class LiveStreaming extends Component {
+export default class Live extends Component {
+
     render() {
         return (
-            <h4>Live Streaming</h4>
+            <h4>Live Page</h4>
         );
     }
 }

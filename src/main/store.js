@@ -4,7 +4,7 @@ import { createHashHistory } from 'history';
 import createLogger from 'redux-logger';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import reducers from '../reducers';
+import reducers from './reducers';
 import { routes } from './routes';
 
 const logger = createLogger({
@@ -24,8 +24,8 @@ const store = createStoreWithMiddleware(reducers),
 
 if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-        const nextRootReducer = require('../reducers/index');
+    module.hot.accept('./reducers', () => {
+        const nextRootReducer = require('./reducers');
         store.replaceReducer(nextRootReducer);
     });
 }

@@ -5,8 +5,7 @@ import { Router } from 'react-router';
 import { store, routes, history } from './store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-// Application Main CSS
-require('../styles/main.scss');
+require('./styles.scss');
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release

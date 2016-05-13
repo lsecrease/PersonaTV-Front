@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+
+// Normalize CSS
+@import '~normalize-scss/sass/normalize/variables';
+@import '~normalize-scss/sass/normalize/vertical-rhythm';
+@import '~normalize-scss/sass/normalize/normalize-mixin';
+@include normalize();
+
+// Breakpoint CSS
+@import '~breakpoint-sass/stylesheets/breakpoint';
+
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #525252;
+    font-weight: 200;
+    -webkit-font-smoothing: antialiased;
+    height: 100vh;
+}
+
+:global #app {
+    height: 100%;
+}
+
+h4 {
+    font-weight: 200;
+    font-size: 56px;
+}

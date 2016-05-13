@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import { push } from 'react-router-redux';
 import {
     Paper,
@@ -11,12 +14,14 @@ import {
     IconButton,
     FontIcon
 } from 'material-ui';
-import { Notifications } from './icons';
+
+import { Notifications } from '../icons';
 
 const logo = require('../images/logo.png'),
     user_picture = require('../images/user.png');
 
-export default class Header extends React.Component {
+export class Header extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -99,3 +104,13 @@ export default class Header extends React.Component {
         );
     }
 }
+
+export default connect(() => {
+    return {};
+}, (dispatch) => {
+    return {
+        actions: bindActionCreators({
+        }, dispatch),
+        dispatch
+    };
+})(Header);
