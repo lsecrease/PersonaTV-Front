@@ -29,7 +29,7 @@ export class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'explore'
+            selectedTab: 'live'
         };
     }
 
