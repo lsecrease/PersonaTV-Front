@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 // Containers
 import Login from '../Login/';
@@ -15,6 +15,7 @@ import AuthenticatedRoute from '../shared/components/AuthenticatedRoute';
 export const routes = (
     <div>
         <Route path='/' component={Home}>
+            <IndexRoute component={Live} />
             <Route path='login' component={Login} />
             <Route path='live' component={Live} />
             <Route path='explore' component={Explore} />
