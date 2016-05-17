@@ -5,3 +5,15 @@
     align-items: center;
     justify-content: center;
 }
+
+.center-column-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.center-row-vertical {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
