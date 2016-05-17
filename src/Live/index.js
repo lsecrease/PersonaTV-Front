@@ -10,7 +10,7 @@ export default class Live extends Component {
         return (
             <div styleName='container'>
                 <Sidebar />
-                <Player provider='vimeo' />
+                <Player provider='youtube' />
             </div>
         );
     }
