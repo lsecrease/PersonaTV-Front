@@ -1,10 +1,6 @@
-$defaultColor: #434343;
+@import '../shared/styles/flex-center.css';
 
-.center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+$defaultColor: #434343;
 
 .toolbar {
     display: flex !important;
@@ -25,21 +21,11 @@ $defaultColor: #434343;
 .right-items {
     width: 70%;
     margin-left: 10em;
-    composes: center;
+    composes: flex-center-row;
     justify-content: flex-end;
 }
 
 .notifications {
     background-color: $defaultColor;
     padding: 0;
-}
-
-.avatar {
-    padding: 0 !important;
-}
-
-.username {
-    color: #9DAEC4;
-    font-size: 14px;
-    margin: 0 2px 0 2px;
 }
