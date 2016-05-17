@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './styles.css';
 import { IconButton, FontIcon, Avatar } from 'material-ui';
 
-const UserLoggedIn = ({ props }) => (
+export const UserLoggedIn = ({ name, picture }) => (
     <div className={styles.container}>
-        <h6 className={styles.username}>{props.name}</h6>
+        <h6 className={styles.username}>{name}</h6>
         <IconButton className={styles.avatar}>
-            <Avatar src={props.picture} />
+            <Avatar src={picture} />
         </IconButton>
 
         <IconButton
