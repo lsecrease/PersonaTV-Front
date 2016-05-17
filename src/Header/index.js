@@ -19,9 +19,9 @@ import {
 } from 'material-ui';
 
 import { Notifications } from '../icons';
+import UserLoggedIn from './UserLoggedIn/';
 
-const logo = require('../images/logo.png'),
-    user_picture = require('../images/user.png');
+const logo = require('../images/logo.png');
 
 @CSSModules(styles)
 export class Header extends React.Component {
@@ -74,9 +74,7 @@ export class Header extends React.Component {
                             <Notifications styles={{width: '21px', height: '21px', fill: '#BDC6CF'}} viewBox='0 0 25 25' />
                         </IconButton>
 
-                        <IconButton styleName='avatar'>
-                            <Avatar src={user_picture} />
-                        </IconButton>
+                        <UserLoggedIn name='Lawrence O.' picture={require('../images/user.png')} />
                     </ToolbarGroup>
                 </Toolbar>
             </Paper>
