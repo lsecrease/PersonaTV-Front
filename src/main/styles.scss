@@ -6,9 +6,6 @@
 @import '~normalize-scss/sass/normalize/normalize-mixin';
 @include normalize();
 
-// Breakpoint CSS
-@import '~breakpoint-sass/stylesheets/breakpoint';
-
 html,
 body {
     font-family: 'Roboto', sans-serif;
