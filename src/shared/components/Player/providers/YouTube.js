@@ -7,7 +7,7 @@ export default class YouTube extends React.Component {
 
         window.jwplayer('video').setup({
             file: `https://www.youtube.com/watch?v=${video_id}`,
-            width: '60%'
+            width: '50%'
         });
     }
 
