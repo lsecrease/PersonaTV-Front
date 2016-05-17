@@ -2,10 +2,8 @@ var path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    autoprefixer = require('autoprefixer'),
-    precss = require('precss'),
     Config = {
-        srcFolder: path.join(__dirname, '../src'),
+        sourceFolder: path.join(__dirname, '../src'),
         jsFolder: path.join(__dirname, '../src/js'),
         distFolder: path.join(__dirname, '../dist'),
         stylesFolder: path.join(__dirname, '../src/stylesheets'),
@@ -16,7 +14,7 @@ module.exports = {
     devtool: 'source-map',
     noParse: /\.min\.js$/,
     entry: [
-        Config.jsFolder + '/index'
+        Config.sourceFolder + '/main/index'
     ],
     plugins: [
         new HtmlWebpackPlugin({
@@ -50,26 +48,31 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['', '.js', '.scss']
+        extensions: ['', '.js', '.css', '.scss'],
+        modulesDirectories: ['node_modules']
     },
     output: {
         path: Config.distFolder,
         filename: 'bundle.js'
     },
     postcss: function() {
-        return [autoprefixer, precss];
+        return [require('autoprefixer'), require('precss')];
     },
     module: {
         loaders: [{
             test: /\.js$/,
             loaders: ['babel'],
-            include: Config.jsFolder
+            include: Config.sourceFolder
         }, {
             test: /\.png$/,
             loaders: ['file']
         }, {
-            test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'])
+            test: /\.(css|scss)$/,
+            loader: ExtractTextPlugin.extract('style-loader', [
+                'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+                'postcss-loader',
+                'sass-loader'
+            ])
         }
     ]}
 };
