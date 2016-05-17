@@ -1,0 +1,7 @@
+@import '../../../../styles/flex-center.css';
+
+.player {
+    height: 100%;
+    width: 60%;
+    composes: flex-center;
+}
