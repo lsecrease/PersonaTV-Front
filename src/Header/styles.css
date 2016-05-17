@@ -37,3 +37,9 @@ $defaultColor: #434343;
 .avatar {
     padding: 0 !important;
 }
+
+.username {
+    color: #9DAEC4;
+    font-size: 14px;
+    margin: 0 2px 0 2px;
+}
