@@ -1,5 +1,8 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
+import styles from './styles.css';
 
+@CSSModules(styles)
 export default class YouTube extends React.Component {
 
     componentDidMount() {
@@ -7,13 +10,17 @@ export default class YouTube extends React.Component {
 
         window.jwplayer('video').setup({
             file: `https://www.youtube.com/watch?v=${video_id}`,
-            width: '50%'
+            width: '100%',
+            aspectratio: '16:9',
+            stretching: 'uniform'
         });
     }
 
     render() {
         return (
-            <div id='video'></div>
+            <div styleName='player'>
+                <div id='video'></div>
+            </div>
         );
     }
 }
