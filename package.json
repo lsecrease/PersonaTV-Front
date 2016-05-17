@@ -57,10 +57,10 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "vimeo-froogaloop": "^0.1.0",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4"
   },
   "devDependencies": {
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "eslint": "^2.8.0",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-react": "^5.0.1",
