@@ -1,0 +1,28 @@
+
+/* ---------- Breakpoint Up ---------- */
+
+/* Small devices (landscape phones, 34em and up) */
+@value bp-up-sm: (min-width: 34em);
+
+/* Medium devices (tablets, 48em and up) */
+@value bp-up-md: (min-width: 48em);
+
+/* Large devices (desktops, 62em and up) */
+@value bp-up-lg: (min-width: 62em);
+
+/* Extra large devices (large desktops, 75em and up) */
+@value bp-up-xl: (min-width: 75em);
+
+/* ---------- Breakpoint Down ---------- */
+
+/* Extra small devices (portrait phones, less than 34em) */
+@value bp-down-xs: (max-width: 33.9em);
+
+/* Small devices (landscape phones, less than 48em) */
+@value bp-down-sm: (max-width: 47.9em);
+
+/* Medium devices (tablets, less than 62em) */
+@value bp-down-md: (max-width: 61.9em);
+
+/* Large devices (desktops, less than 75em) */
+@value bp-down-lg: (max-width: 74.9em);
