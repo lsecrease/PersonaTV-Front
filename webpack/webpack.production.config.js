@@ -3,23 +3,22 @@ var path = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     Config = {
-        sourceFolder: path.join(__dirname, '../src'),
-        jsFolder: path.join(__dirname, '../src/js'),
-        distFolder: path.join(__dirname, '../dist'),
-        stylesFolder: path.join(__dirname, '../src/stylesheets'),
-        webpackTemplates: path.join(__dirname, 'templates')
+        source: path.join(__dirname, '../src'),
+        vendor: path.join(__dirname, '../src/vendor'),
+        dist: path.join(__dirname, '../dist'),
+        templates: path.join(__dirname, 'templates')
     };
 
 module.exports = {
     devtool: 'source-map',
     noParse: /\.min\.js$/,
     entry: [
-        Config.sourceFolder + '/main/index'
+        Config.source + '/main/index'
     ],
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: Config.webpackTemplates + '/index.html',
+            template: Config.templates + '/index.html',
             inject: 'body'
         }),
 
@@ -32,7 +31,8 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 // Useful to reduce the size of client-side libraries, e.g. react
-                NODE_ENV: JSON.stringify('production')
+                NODE_ENV: JSON.stringify('production'),
+                JWPLAYER_KEY: JSON.stringify('73zSKjI3j1f/F/MjSlxihP0fByUyhqpicUehWQ==')
             }
         }),
 
@@ -49,20 +49,29 @@ module.exports = {
     ],
     resolve: {
         extensions: ['', '.js', '.css', '.scss'],
-        modulesDirectories: ['node_modules']
+        modulesDirectories: ['node_modules'],
+        alias: {
+            jwplayer: Config.vendor + '/jwplayer/jwplayer.js'
+        }
     },
     output: {
-        path: Config.distFolder,
+        path: Config.dist,
         filename: 'bundle.js'
     },
     postcss: function() {
         return [require('autoprefixer'), require('precss')];
     },
+    externals: {
+        'window': 'Window'
+    },
     module: {
         loaders: [{
             test: /\.js$/,
             loaders: ['babel'],
-            include: Config.sourceFolder
+            include: Config.source
+        }, {
+            test: /jwplayer.js$/,
+            loader: 'expose?jwplayer'
         }, {
             test: /\.png$/,
             loaders: ['file']
